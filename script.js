@@ -1,42 +1,69 @@
-let options = ["rock","paper","scissors"];
+let options = ["rock", "paper", "scissors"];
 
-function getComputerChoice(){
-    let randomNumber = Math.floor(Math.random()*3)
+function getComputerChoice() {
+    let randomNumber = Math.floor(Math.random() * 3)
     return options[randomNumber];
 }
 
-// Write a function that plays a single round of Rock Paper Scissors.
-// The function should take two parameters - the playerSelection and computerSelection
-// - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
-function playRockPaperScissors(computerSelection,playerSelection){
+// selecting the result-div
+let resultDiv = document.querySelector(".result-div");
 
-    if(playerSelection===computerSelection){
-        return `it's a tie`;
+// Defining computer/player scores
+let computerScore = 0;
+let playerScore = 0;
+let maxScore = 5;
+let gameOver = false;
+
+
+function playRockPaperScissors(computerSelection, playerSelection) {
+    if(gameOver){
+        return;
     }
-    else if(playerSelection==="rock" && computerSelection=="paper" || playerSelection==="paper" && computerSelection=="scissors" || playerSelection==="scissors" && computerSelection=="rock"){
-        return `computer wins ${computerSelection} beats ${playerSelection}`;
+    if(computerScore===maxScore){
+        resultDiv.append(`----------COMPUTER WINS--------------`)
+        gameOver = true;
     }
-    else{
-        return `you win! ${playerSelection} beats ${computerSelection}`;
+    if(playerScore===maxScore){
+        resultDiv.append(`----------PLAYER WINS--------------`)
+        gameOver = true;
+    }
+    if (computerScore === maxScore || playerScore === maxScore) {
+        return;
+    }
+    else {
+        if (playerSelection === computerSelection) {
+            resultDiv.append(`it's a tie`);
+            return;
+        }
+        else if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock") {
+            computerScore += 1;
+            resultDiv.append(`computer wins ${computerSelection} beats ${playerSelection} the current score is ${computerScore}:${playerScore}`);
+            return;
+        }
+        else {
+            playerScore += 1;
+            resultDiv.append(`you win! ${playerSelection} beats ${computerSelection} the current score is ${computerScore}:${playerScore}`);
+            return;
+        }
     }
 }
 
 
+// selecting buttons and assigning them to variables.
+let rock = document.querySelector('.rock');
+let paper = document.querySelector('.paper');
+let scissors = document.querySelector('.scissors');
 
-// Write a NEW function called game().
-// Use the previous function inside of this one to play a 5 round game
-// that keeps score and reports a winner or loser at the end.
+// adding click event listners.
+rock.addEventListener("click", function () {
+    playRockPaperScissors(getComputerChoice(), 'rock');
+})
 
-function game(){
+paper.addEventListener("click", function () {
+    playRockPaperScissors(getComputerChoice(), 'paper');
 
-    for(let i=1;i<6;i++){
+})
 
-        let computerSelection = getComputerChoice();
-
-        let playerSelection = prompt("What is your selection?").toLowerCase();
-
-        console.log(playRockPaperScissors(computerSelection,playerSelection));
-    }
-}
-
-game();
+scissors.addEventListener("click", function () {
+    playRockPaperScissors(getComputerChoice(), 'scissors');
+})
