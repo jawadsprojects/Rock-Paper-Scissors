@@ -5,18 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
-    <h1>Lets play rock paper Scissors</h1>
+    
+    <div class="heading">
+        <h1>Lets play rock paper Scissors</h1>
+    </div>
 
-    <!-- Create three buttons, one for each selection -->
-    <button class="rock">rock</button>
-    <button class="paper">paper</button>
-    <button class="scissors">scissors</button>
+    <div class="display-scores">
+        <div class="userLeft">
+            <img class="foruser rock" src="icons/rock.png" alt="rock">
+            <img class="foruser paper" src="icons/paper.png" alt="paper">
+            <img class="foruser scissors" src="icons/scissors.png" alt="scissors">
+        </div>
+        <div class="computerRight">
+            <img class="compRock" src="icons/rock.png" alt="rock">
+            <img class=compPaper" src="icons/paper.png" alt="paper">
+            <img class="compScissors" src="icons/scissors.png" alt="scissors">
+        </div>
+    </div>
 
     <!-- Add a div for displaying results -->
-    <div class="result-div"></div>
-
+    <div class="container">
+        <h2 class="result-div"></h2>
+        <h2 class="score-div"></h2>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

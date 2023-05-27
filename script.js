@@ -2,11 +2,14 @@ let options = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
+    // resultDiv.append(options[randomNumber])
     return options[randomNumber];
 }
 
-// selecting the result-div
+
+// selecting the result-div and score div
 let resultDiv = document.querySelector(".result-div");
+let scoreDiv = document.querySelector(".score-div");
 
 // Defining computer/player scores
 let computerScore = 0;
@@ -16,15 +19,15 @@ let gameOver = false;
 
 
 function playRockPaperScissors(computerSelection, playerSelection) {
-    if(gameOver){
+    if (gameOver) {
         return;
     }
-    if(computerScore===maxScore){
-        resultDiv.append(`----------COMPUTER WINS--------------`)
+    if (computerScore === maxScore) {
+        resultDiv.textContent = `----------COMPUTER WINS--------------`
         gameOver = true;
     }
-    if(playerScore===maxScore){
-        resultDiv.append(`----------PLAYER WINS--------------`)
+    if (playerScore === maxScore) {
+        resultDiv.textContent = `----------PLAYER WINS--------------`
         gameOver = true;
     }
     if (computerScore === maxScore || playerScore === maxScore) {
@@ -32,27 +35,32 @@ function playRockPaperScissors(computerSelection, playerSelection) {
     }
     else {
         if (playerSelection === computerSelection) {
-            resultDiv.append(`it's a tie`);
+            resultDiv.textContent = `it's a tie`;
+            scoreDiv.textContent = `${computerScore}:${playerScore}`
             return;
         }
         else if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock") {
             computerScore += 1;
-            resultDiv.append(`computer wins ${computerSelection} beats ${playerSelection} the current score is ${computerScore}:${playerScore}`);
+            resultDiv.textContent = `computer wins ${computerSelection} beats ${playerSelection} the current score is ${computerScore}:${playerScore}`;
+            scoreDiv.textContent = `${computerScore}:${playerScore}`
             return;
         }
         else {
             playerScore += 1;
-            resultDiv.append(`you win! ${playerSelection} beats ${computerSelection} the current score is ${computerScore}:${playerScore}`);
+            resultDiv.textContent = `you win! ${playerSelection} beats ${computerSelection} the current score is ${computerScore}:${playerScore}`;
+            scoreDiv.textContent = `${computerScore}:${playerScore}`
             return;
         }
     }
 }
 
 
-// selecting buttons and assigning them to variables.
+// selecting images and assigning them to variables.
 let rock = document.querySelector('.rock');
 let paper = document.querySelector('.paper');
 let scissors = document.querySelector('.scissors');
+
+
 
 // adding click event listners.
 rock.addEventListener("click", function () {

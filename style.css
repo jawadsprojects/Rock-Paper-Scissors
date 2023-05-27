@@ -1,0 +1,63 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+}
+
+.display-scores{
+    margin: 5px 8%;
+    display: flex;
+    justify-content:space-between;
+    /* gap:8px; */
+}
+
+.userLeft,
+.computerRight{
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+    padding-left: 50px;
+    justify-content: space-around;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
+
+.foruser:hover{
+    transform: rotate3d(0.5, 1, 0, 30deg);
+    border: 2px solid red;
+}
+
+
+.xyzs{
+    border: 2px solid red;
+}
+
+.result-div,
+.score-div{
+    /* background-color:red; */
+    margin: 50px 8%;
+    text-align: center;
+    animation: animat-1 2s 250ms forwards;
+}
+
+@keyframes animat-1 {
+  from {
+    letter-spacing: 20px;
+    opacity: 0;
+    filter: blur(5px);
+  }
+  to {
+    letter-spacing: 0;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
